@@ -1,16 +1,21 @@
 import React from 'react';
-import Card from 'components/Card'
-import {Avatar, Checkbox} from 'antd'
+import Card from 'components/Card';
+import {Avatar, Checkbox} from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-
+import { CardContainerEnd, CardTitle } from './styles'
 const TaskCard = (props)=>{
     const {task} = props;
     return(
         <Card>
             {task.user && <Avatar size={64} icon={<UserOutlined />} src={task.user.avatar || null} />}
-            <h1>{task.description}</h1>
-            <span>{task.fecha}</span>
-            <Checkbox value={task.completed}></Checkbox>
+            <div>
+                <CardTitle>{task.description}</CardTitle>
+                <span>{task.fecha}</span>
+            </div>
+            <CardContainerEnd>
+               <Checkbox value={task.completed}></Checkbox> 
+            </CardContainerEnd>
+            
         </Card>
     );
 };
